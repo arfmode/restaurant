@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VELORÉ — Мистецтво смаку</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header" id="header">
+    <div class="container nav-container">
+        <a href="#home" class="logo">VELORÉ<span>.</span></a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Відкрити меню">
+            <span></span><span></span>
+        </button>
+
+        <nav class="nav" id="nav">
+            <a href="#home">Головна</a>
+            <a href="#about">Про нас</a>
+            <a href="#menu">Меню</a>
+            <a href="#gallery">Галерея</a>
+            <a href="#contacts">Контакти</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="account-button" id="accountButton">Мій акаунт</button>
+            <a href="#reservation" class="nav-button">Забронювати</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- ГОЛОВНИЙ ЕКРАН -->
+    <section class="hero" id="home">
+        <div class="hero-image"></div>
+        <div class="hero-content container">
+            <p class="eyebrow">THE ART OF FINE DINING</p>
+            <h1>Мистецтво<br>в кожному <i>смаку</i></h1>
+            <p class="hero-description">
+                Простір вишуканої гастрономії, де кожна страва
+                створена для особливих моментів.
+            </p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-gold">Переглянути меню</a>
+                <a href="#about" class="text-link">Відкрити для себе <span>↗</span></a>
+            </div>
+        </div>
+        <div class="hero-bottom container">
+            <span>ВИШУКАНА КУХНЯ</span>
+            <span>НЕЗАБУТНІ ВРАЖЕННЯ</span>
+            <a href="#about">ПРОКРУТІТЬ ВНИЗ ↓</a>
+        </div>
+    </section>
+
+    <!-- ПРО РЕСТОРАН -->
+    <section class="section" id="about">
+        <div class="container about-grid">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1000&q=85" alt="Інтер'єр ресторану">
+                <span class="image-caption">A PLACE TO EXPERIENCE</span>
+            </div>
+
+            <div class="about-content">
+                <p class="eyebrow">НАША ФІЛОСОФІЯ</p>
+                <h2>Більше, ніж<br><i>просто ресторан</i></h2>
+                <p>
+                    VELORÉ — це місце, де гастрономія перетворюється
+                    на мистецтво. Ми поєднуємо сучасну кухню,
+                    найкращі інгредієнти та справжню гостинність.
+                </p>
+                <p>
+                    Кожна деталь має значення. Кожен вечір —
+                    це можливість створити особливий спогад.
+                </p>
+                <a href="#reservation" class="text-link">Стати нашим гостем <span>↗</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФІЛОСОФІЯ -->
+    <section class="philosophy">
+        <div class="container">
+            <p class="eyebrow">VELORÉ EXPERIENCE</p>
+            <h2>Смак — це емоція.<br>Атмосфера — це <i>мистецтво.</i></h2>
+            <p>Ми створюємо простір, у якому хочеться залишатися довше.</p>
+        </div>
+    </section>
+
+    <!-- МЕНЮ -->
+    <section class="section menu-section" id="menu">
+        <div class="container">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">DISCOVER OUR MENU</p>
+                    <h2>Наше <i>меню</i></h2>
+                </div>
+                <p>Авторські страви, сезонні продукти та гармонія смаків.</p>
+            </div>
+
+            <div class="menu-tabs">
+                <button class="menu-tab active" data-category="all">Усі страви</button>
+                <button class="menu-tab" data-category="starters">Закуски</button>
+                <button class="menu-tab" data-category="mains">Основні страви</button>
+                <button class="menu-tab" data-category="desserts">Десерти</button>
+            </div>
+
+            <div class="menu-grid">
+
+                <!-- ЗАКУСКИ -->
+
+                <article class="menu-card" data-category="starters">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=90" alt="Салат з авокадо">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Салат з авокадо</h3>
+                            <p>Авокадо, свіжі овочі, авторський соус</p>
+                        </div>
+                        <span>420 ₴</span>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="starters">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=900&q=90" alt="Тартар із лосося">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Тартар із лосося</h3>
+                            <p>Лосось, цитрус, свіжа зелень</p>
+                        </div>
+                        <span>560 ₴</span>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="starters">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=90" alt="Овочевий салат">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Салат із зеленню</h3>
+                            <p>Сезонні овочі, зелень, оливкова олія</p>
+                        </div>
+                        <span>380 ₴</span>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="starters">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=90" alt="Крем-суп">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Крем-суп із гарбуза</h3>
+                            <p>Гарбуз, вершки, насіння гарбуза</p>
+                        </div>
+                        <span>340 ₴</span>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="starters">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=90" alt="Брускети">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Брускети з томатами</h3>
+                            <p>Хрусткий хліб, томати, базилік</p>
+                        </div>
+                        <span>290 ₴</span>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="starters">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=90" alt="Салат із креветками">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Салат із креветками</h3>
+                            <p>Креветки, авокадо, легкий соус</p>
+                        </div>
+                        <span>520 ₴</span>
+                    </div>
+                </article>
+
+                <!-- ОСНОВНІ СТРАВИ -->
+
+                <article class="menu-card" data-category="mains">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=900&q=90" alt="Стейк">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Стейк із овочами</h3>
+                            <p>Яловичина, сезонні овочі</p>
+                        </div>
+                        <span>890 ₴</span>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="mains">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=900&q=90" alt="Паста">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Паста з трюфелем</h3>
+                            <p>Домашня паста, вершковий соус</p>
+                        </div>
+                        <span>640 ₴</span>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="mains">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=900&q=90" alt="Риба">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Філе лосося</h3>
+                            <p>Лосось, овочі, лимонний соус</p>
+                        </div>
+                        <span>760 ₴</span>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="mains">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=90" alt="М'ясна страва">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Яловичина BBQ</h3>
+                            <p>Ніжна яловичина, авторський соус</p>
+                        </div>
+                        <span>820 ₴</span>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="mains">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=900&q=90" alt="Паста з томатами">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Паста з томатами</h3>
+                            <p>Паста, томати, пармезан, базилік</p>
+                        </div>
+                        <span>490 ₴</span>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="mains">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=90" alt="М'ясо">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Ребра у глазурі</h3>
+                            <p>Соковиті ребра, медова глазур</p>
+                        </div>
+                        <span>780 ₴</span>
+                    </div>
+                </article>
+
+                <!-- ДЕСЕРТИ -->
+
+                <article class="menu-card" data-category="desserts">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=90" alt="Шоколадний десерт">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Шоколадний десерт</h3>
+                            <p>Шоколадний мус, сезонні ягоди</p>
+                        </div>
+                        <span>350 ₴</span>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="desserts">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=90" alt="Ягідний десерт">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Ягідний тарт</h3>
+                            <p>Свіжі ягоди, ніжний крем</p>
+                        </div>
+                        <span>320 ₴</span>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="desserts">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=90" alt="Полуничний торт">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Полуничний торт</h3>
+                            <p>Полуниця, вершковий крем</p>
+                        </div>
+                        <span>360 ₴</span>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="desserts">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=90" alt="Пончики">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Ніжні пончики</h3>
+                            <p>Ванільний крем, цукрова пудра</p>
+                        </div>
+                        <span>280 ₴</span>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="desserts">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=900&q=90" alt="Морозиво">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Домашнє морозиво</h3>
+                            <p>Натуральне морозиво, ягоди</p>
+                        </div>
+                        <span>250 ₴</span>
+                    </div>
+                </article>
+
+                <article class="menu-card" data-category="desserts">
+                    <div class="menu-card-image">
+                        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=90" alt="Вершковий десерт">
+                    </div>
+                    <div class="menu-card-info">
+                        <div>
+                            <h3>Ванільна панакота</h3>
+                            <p>Вершки, ваніль, ягідний соус</p>
+                        </div>
+                        <span>310 ₴</span>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ГАЛЕРЕЯ -->
+    <section class="section" id="gallery">
+        <div class="container">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">THE ATMOSPHERE</p>
+                    <h2>Атмосфера <i>VELORÉ</i></h2>
+                </div>
+                <p>Простір, створений для особливих вечорів.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item gallery-large">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1100&q=85" alt="Зал ресторану">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=85" alt="Вечеря">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=85" alt="Сервірування столу">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БРОНЮВАННЯ -->
+    <section class="section reservation-section" id="reservation">
+        <div class="container reservation-grid">
+            <div class="reservation-content">
+                <p class="eyebrow">MAKE A RESERVATION</p>
+                <h2>Ваш особливий<br><i>вечір починається тут</i></h2>
+                <p>Забронюйте столик і дозвольте нам створити для вас незабутній вечір.</p>
+                <div class="reservation-contact">
+                    <span>Щодня</span>
+                    <strong>12:00 — 23:00</strong>
+                </div>
+            </div>
+
+            <form class="reservation-form" id="reservationForm">
+                <h3>Забронювати столик</h3>
+
+                <label for="guestName">Ваше ім'я</label>
+                <input type="text" id="guestName" placeholder="Введіть ваше ім'я" required>
+
+                <label for="guestPhone">Номер телефону</label>
+                <input type="tel" id="guestPhone" placeholder="+380..." required>
+
+                <div class="form-row">
+                    <div>
+                        <label for="reservationDate">Дата</label>
+                        <input type="date" id="reservationDate" required>
+                    </div>
+                    <div>
+                        <label for="reservationTime">Час</label>
+                        <select id="reservationTime" required>
+                            <option value="">Оберіть час</option>
+                            <option>12:00</option><option>13:00</option>
+                            <option>14:00</option><option>15:00</option>
+                            <option>16:00</option><option>17:00</option>
+                            <option>18:00</option><option>19:00</option>
+                            <option>20:00</option><option>21:00</option>
+                            <option>22:00</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label for="guestCount">Кількість гостей</label>
+                <select id="guestCount" required>
+                    <option value="1">1 гість</option>
+                    <option value="2" selected>2 гостя</option>
+                    <option value="3">3 гостя</option>
+                    <option value="4">4 гостя</option>
+                    <option value="5">5 гостей</option>
+                    <option value="6">6 гостей</option>
+                    <option value="7">7 гостей</option>
+                    <option value="8">8 гостей</option>
+                </select>
+
+                <label for="guestComment">Побажання</label>
+                <textarea id="guestComment" placeholder="Ваші побажання"></textarea>
+
+                <button type="submit" class="btn btn-gold form-button">Надіслати заявку</button>
+                <p class="form-message" id="formMessage"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- КОНТАКТИ -->
+    <section class="section" id="contacts">
+        <div class="container contacts-grid">
+            <div>
+                <p class="eyebrow">FIND US</p>
+                <h2>Будемо раді<br><i>вас бачити</i></h2>
+            </div>
+
+            <div class="contact-info">
+                <div><span>АДРЕСА</span><p>Ваше місто, вулиця Прикладна, 10</p></div>
+                <div><span>ТЕЛЕФОН</span><p>+380 (00) 000 00 00</p></div>
+                <div><span>ГРАФІК РОБОТИ</span><p>Щодня · 12:00 — 23:00</p></div>
+                <div><span>EMAIL</span><p>hello@velore.com</p></div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer-content">
+        <a href="#home" class="logo">VELORÉ<span>.</span></a>
+        <p>THE ART OF FINE DINING</p>
+        <span>© <span id="currentYear"></span> VELORÉ. Усі права захищені.</span>
+    </div>
+</footer>
+
+<!-- МОДАЛЬНЕ ВІКНО АКАУНТА -->
+<div class="modal-overlay" id="accountModal">
+    <div class="account-modal">
+        <button class="modal-close" id="closeAccount" aria-label="Закрити">×</button>
+
+        <div id="authContent">
+            <p class="eyebrow">WELCOME TO VELORÉ</p>
+            <h2 id="authTitle">Ваш <i>акаунт</i></h2>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-auth="login">Вхід</button>
+                <button class="auth-tab" data-auth="register">Реєстрація</button>
+            </div>
+
+            <form id="loginForm" class="auth-form">
+                <label for="loginEmail">Електронна пошта</label>
+                <input type="email" id="loginEmail" placeholder="name@example.com" required>
+
+                <label for="loginPassword">Пароль</label>
+                <input type="password" id="loginPassword" placeholder="Ваш пароль" required>
+
+                <button class="btn btn-gold form-button" type="submit">Увійти</button>
+            </form>
+
+            <form id="registerForm" class="auth-form hidden">
+                <label for="registerName">Ваше ім'я</label>
+                <input type="text" id="registerName" placeholder="Як до вас звертатися?" required>
+
+                <label for="registerEmail">Електронна пошта</label>
+                <input type="email" id="registerEmail" placeholder="name@example.com" required>
+
+                <label for="registerPassword">Пароль</label>
+                <input type="password" id="registerPassword" placeholder="Мінімум 6 символів" minlength="6" required>
+
+                <button class="btn btn-gold form-button" type="submit">Створити акаунт</button>
+            </form>
+
+            <p class="auth-message" id="authMessage"></p>
+        </div>
+
+        <div id="profileContent" class="hidden">
+            <p class="eyebrow">YOUR VELORÉ ACCOUNT</p>
+            <h2>Вітаємо, <i id="profileName"></i>!</h2>
+            <p class="profile-email" id="profileEmail"></p>
+            <p class="profile-description">Раді бачити вас у VELORÉ. Дякуємо, що обираєте нас.</p>
+            <button class="btn btn-dark form-button" id="logoutButton">Вийти з акаунта</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
