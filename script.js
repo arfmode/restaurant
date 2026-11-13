@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // МОБІЛЬНЕ МЕНЮ
-
     const menuToggle = document.getElementById("menuToggle");
     const nav = document.getElementById("nav");
 
@@ -15,17 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-
-    // ЕФЕКТ ШАПКИ ПРИ ПРОКРУТЦІ
-
     const header = document.getElementById("header");
 
     window.addEventListener("scroll", () => {
         header.classList.toggle("scrolled", window.scrollY > 40);
     });
-
-
-    // ФІЛЬТРАЦІЯ МЕНЮ
 
     const tabs = document.querySelectorAll(".menu-tab");
     const cards = document.querySelectorAll(".menu-card");
@@ -47,9 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-
-    // ДАТА БРОНЮВАННЯ
-
     const dateInput = document.getElementById("reservationDate");
 
     function getLocalDate() {
@@ -57,13 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const local = new Date(
             date.getTime() - date.getTimezoneOffset() * 60000
         );
+
         return local.toISOString().split("T")[0];
     }
 
     dateInput.min = getLocalDate();
-
-
-    // ФОРМА БРОНЮВАННЯ
 
     const reservationForm = document.getElementById("reservationForm");
     const formMessage = document.getElementById("formMessage");
@@ -80,8 +67,15 @@ document.addEventListener("DOMContentLoaded", () => {
             comment: document.getElementById("guestComment").value.trim()
         };
 
-        if (!reservation.name || !reservation.phone || !reservation.date || !reservation.time) {
-            formMessage.textContent = "Будь ласка, заповніть усі обов'язкові поля.";
+        if (
+            !reservation.name ||
+            !reservation.phone ||
+            !reservation.date ||
+            !reservation.time
+        ) {
+            formMessage.textContent =
+                "Будь ласка, заповніть усі обов'язкові поля.";
+
             formMessage.style.color = "#B33A3A";
             return;
         }
@@ -89,7 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Заявка на бронювання:", reservation);
 
         formMessage.textContent =
-            "Дякуємо, " + reservation.name + "! Демонстраційну заявку заповнено.";
+            "Дякуємо, " + reservation.name +
+            "! Демонстраційну заявку заповнено.";
 
         formMessage.style.color = "#A98750";
 
@@ -97,35 +92,40 @@ document.addEventListener("DOMContentLoaded", () => {
         dateInput.min = getLocalDate();
     });
 
-
-    // РІК У ФУТЕРІ
-
     document.getElementById("currentYear").textContent =
         new Date().getFullYear();
 
+    const animatedElements = document.querySelectorAll(
+        ".about-content, .about-image, .menu-card, .gallery-item, .reservation-form, .section-heading"
+    );
 
-    // АНІМАЦІЇ ПРИ ПРОКРУТЦІ
+    if ("IntersectionObserver" in window) {
+        const scrollObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
                 entry.target.classList.add("show");
+
+                if (entry.target.classList.contains("section-heading")) {
+                    entry.target.classList.add("heading-visible");
+                }
+
                 observer.unobserve(entry.target);
-            }
+            });
+        }, {
+            threshold: 0.12
         });
-    }, { threshold: 0.12 });
 
-    document.querySelectorAll(
-        ".about-content, .about-image, .menu-card, .gallery-item, .reservation-form"
-    ).forEach(element => {
-        element.classList.add("reveal");
-        observer.observe(element);
-    });
+        animatedElements.forEach(element => {
+            element.classList.add("reveal");
+            scrollObserver.observe(element);
+        });
 
-
-    // =====================================
-    // АКАУНТ: РЕЄСТРАЦІЯ ТА ВХІД
-    // =====================================
+    } else {
+        animatedElements.forEach(element => {
+            element.classList.add("show", "heading-visible");
+        });
+    }
 
     const accountModal = document.getElementById("accountModal");
     const accountButton = document.getElementById("accountButton");
@@ -150,7 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const USERS_KEY = "velore_users";
     const SESSION_KEY = "velore_current_user";
 
-
     function getUsers() {
         try {
             return JSON.parse(localStorage.getItem(USERS_KEY)) || [];
@@ -158,7 +157,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return [];
         }
     }
-
 
     function getCurrentUser() {
         try {
@@ -168,20 +166,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-
     function openModal() {
         accountModal.classList.add("open");
         document.body.classList.add("modal-open");
         updateAccountView();
     }
 
-
     function closeModal() {
         accountModal.classList.remove("open");
         document.body.classList.remove("modal-open");
         authMessage.textContent = "";
     }
-
 
     function showAuth(mode = "login") {
         authContent.classList.remove("hidden");
@@ -194,7 +189,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setAuthMode(mode);
     }
-
 
     function setAuthMode(mode) {
         const isRegister = mode === "register";
@@ -213,7 +207,6 @@ document.addEventListener("DOMContentLoaded", () => {
         authMessage.textContent = "";
     }
 
-
     function updateAccountView() {
         const user = getCurrentUser();
 
@@ -225,12 +218,12 @@ document.addEventListener("DOMContentLoaded", () => {
             profileEmail.textContent = user.email;
 
             accountButton.textContent = "Мій профіль";
+
         } else {
             showAuth("login");
             accountButton.textContent = "Мій акаунт";
         }
     }
-
 
     accountButton.addEventListener("click", openModal);
     closeAccount.addEventListener("click", closeModal);
@@ -247,33 +240,34 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-
-    // ПЕРЕМИКАННЯ МІЖ ВХОДОМ І РЕЄСТРАЦІЄЮ
-
     authTabs.forEach(tab => {
         tab.addEventListener("click", () => {
             setAuthMode(tab.dataset.auth);
         });
     });
 
-
-    // РЕЄСТРАЦІЯ
-
     registerForm.addEventListener("submit", event => {
         event.preventDefault();
 
         const name = document.getElementById("registerName").value.trim();
-        const email = document.getElementById("registerEmail").value.trim().toLowerCase();
+
+        const email = document.getElementById("registerEmail")
+            .value.trim().toLowerCase();
+
         const password = document.getElementById("registerPassword").value;
 
         if (name.length < 2) {
-            authMessage.textContent = "Ім'я має містити щонайменше 2 символи.";
+            authMessage.textContent =
+                "Ім'я має містити щонайменше 2 символи.";
+
             authMessage.style.color = "#B33A3A";
             return;
         }
 
         if (password.length < 6) {
-            authMessage.textContent = "Пароль має містити щонайменше 6 символів.";
+            authMessage.textContent =
+                "Пароль має містити щонайменше 6 символів.";
+
             authMessage.style.color = "#B33A3A";
             return;
         }
@@ -283,7 +277,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const existingUser = users.find(user => user.email === email);
 
         if (existingUser) {
-            authMessage.textContent = "Користувач із такою поштою вже зареєстрований.";
+            authMessage.textContent =
+                "Користувач із такою поштою вже зареєстрований.";
+
             authMessage.style.color = "#B33A3A";
             return;
         }
@@ -304,16 +300,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }));
 
         updateAccountView();
-
     });
-
-
-    // ВХІД
 
     loginForm.addEventListener("submit", event => {
         event.preventDefault();
 
-        const email = document.getElementById("loginEmail").value.trim().toLowerCase();
+        const email = document.getElementById("loginEmail")
+            .value.trim().toLowerCase();
+
         const password = document.getElementById("loginPassword").value;
 
         const users = getUsers();
@@ -323,7 +317,9 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         if (!user) {
-            authMessage.textContent = "Неправильна електронна пошта або пароль.";
+            authMessage.textContent =
+                "Неправильна електронна пошта або пароль.";
+
             authMessage.style.color = "#B33A3A";
             return;
         }
@@ -334,23 +330,225 @@ document.addEventListener("DOMContentLoaded", () => {
         }));
 
         updateAccountView();
-
     });
-
-
-    // ВИХІД
 
     logoutButton.addEventListener("click", () => {
         localStorage.removeItem(SESSION_KEY);
+
         showAuth("login");
         accountButton.textContent = "Мій акаунт";
     });
 
-
-    // ПЕРЕВІРКА СЕСІЇ ПІД ЧАС ЗАВАНТАЖЕННЯ
-
     if (getCurrentUser()) {
         accountButton.textContent = "Мій профіль";
     }
+
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    let cart = JSON.parse(localStorage.getItem("veloreCart") || "[]");
+
+    const headerActions = document.querySelector(".header-actions");
+
+    let cartButton = document.querySelector("#cartButton");
+
+    if (!cartButton && headerActions) {
+        cartButton = document.createElement("button");
+
+        cartButton.id = "cartButton";
+        cartButton.className = "cart-button";
+
+        cartButton.innerHTML = 'Кошик <span id="cartCount">0</span>';
+
+        headerActions.prepend(cartButton);
+    }
+
+    document.querySelectorAll(".menu-card").forEach((card, index) => {
+
+        const info = card.querySelector(".menu-card-info");
+
+        if (!info || info.querySelector(".add-to-cart")) return;
+
+        const title = card.querySelector("h3")?.textContent.trim();
+
+        const priceText = info.querySelector("span")?.textContent || "0";
+
+        const price = Number(priceText.replace(/[^\d]/g, ""));
+
+        const button = document.createElement("button");
+
+        button.className = "add-to-cart";
+        button.type = "button";
+        button.textContent = "Додати до кошика ＋";
+
+        button.addEventListener("click", () => {
+
+            const id = "product-" + index;
+
+            const existing = cart.find(item => item.id === id);
+
+            if (existing) {
+                existing.quantity++;
+
+            } else {
+                cart.push({
+                    id,
+                    title,
+                    price,
+                    quantity: 1
+                });
+            }
+
+            saveCart();
+            renderCart();
+        });
+
+        info.appendChild(button);
+    });
+
+    const cartWindow = document.createElement("div");
+
+    cartWindow.className = "cart-overlay";
+
+    cartWindow.innerHTML = `
+        <div class="cart-box">
+            <button class="cart-close">×</button>
+
+            <h2>Ваш кошик</h2>
+
+            <div id="cartItems"></div>
+
+            <div class="cart-footer">
+                <h3>Разом: <span id="cartTotal">0 ₴</span></h3>
+
+                <button class="btn btn-gold" id="clearCart">
+                    Очистити кошик
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(cartWindow);
+
+    function saveCart() {
+        localStorage.setItem("veloreCart", JSON.stringify(cart));
+    }
+
+
+    function renderCart() {
+
+        const itemsContainer = document.querySelector("#cartItems");
+
+        const totalElement = document.querySelector("#cartTotal");
+
+        const countElement = document.querySelector("#cartCount");
+
+        let total = 0;
+        let count = 0;
+
+        itemsContainer.innerHTML = "";
+
+        cart.forEach(item => {
+
+            total += item.price * item.quantity;
+            count += item.quantity;
+
+            const row = document.createElement("div");
+            row.className = "cart-item";
+
+            const name = document.createElement("h3");
+            name.textContent = item.title;
+
+            const price = document.createElement("p");
+            price.textContent = item.price + " ₴";
+
+            const quantity = document.createElement("div");
+            quantity.className = "cart-quantity";
+
+            const minus = document.createElement("button");
+            minus.textContent = "−";
+
+            const number = document.createElement("span");
+            number.textContent = item.quantity;
+
+            const plus = document.createElement("button");
+            plus.textContent = "+";
+
+            const remove = document.createElement("button");
+            remove.className = "cart-remove";
+            remove.textContent = "Видалити";
+
+            minus.addEventListener("click", () => {
+
+                item.quantity--;
+
+                if (item.quantity <= 0) {
+                    cart = cart.filter(product => product.id !== item.id);
+                }
+
+                saveCart();
+                renderCart();
+            });
+
+            plus.addEventListener("click", () => {
+
+                item.quantity++;
+
+                saveCart();
+                renderCart();
+            });
+
+            remove.addEventListener("click", () => {
+
+                cart = cart.filter(product => product.id !== item.id);
+
+                saveCart();
+                renderCart();
+            });
+
+
+            quantity.append(minus, number, plus);
+
+            row.append(name, price, quantity, remove);
+
+            itemsContainer.appendChild(row);
+        });
+
+        if (cart.length === 0) {
+            itemsContainer.innerHTML =
+                "<p class='empty-cart'>Ваш кошик поки порожній</p>";
+        }
+
+        totalElement.textContent = total + " ₴";
+
+        if (countElement) {
+            countElement.textContent = count;
+        }
+    }
+
+    cartButton?.addEventListener("click", () => {
+        cartWindow.classList.add("active");
+    });
+
+    cartWindow.querySelector(".cart-close").addEventListener("click", () => {
+        cartWindow.classList.remove("active");
+    });
+
+    cartWindow.addEventListener("click", event => {
+        if (event.target === cartWindow) {
+            cartWindow.classList.remove("active");
+        }
+    });
+
+    document.querySelector("#clearCart").addEventListener("click", () => {
+
+        cart = [];
+
+        saveCart();
+        renderCart();
+    });
+
+    renderCart();
 
 });
